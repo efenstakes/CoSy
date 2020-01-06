@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+
+  server:
+    build: .
+    # image: efenstakes/CoSy
+    container_name: cosy-server
+    restart: always
+    ports:
+      - '80:5000'
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    container_name: cosy-db
+    ports:
+      - '52342:52342'
