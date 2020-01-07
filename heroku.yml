@@ -1,6 +1,29 @@
+## setup addons used for this app
+setup:
+  addons:
+    - plan: heroku-postgresql
+      as: DATABASE
+  config:
+    S3_BUCKET: cosy-bucket
+
+## build dockerfile image for the web process
 build: 
   docker:
     web: Dockerfile
 
+## execute some tasks before starting server like
+## create server db and tables
+release:
+  image: web 
+  command: 
+    - ./setup-db.sh    
+
+## run the container
 run:
   web: gunicorn run:app --bind 0.0.0.0:$PORT
+  # mail-worker: python mail-worker.py
+
+## -- instructions --
+# heroku stack:set container
+# run app
+# git push heroku master
