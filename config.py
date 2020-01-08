@@ -10,3 +10,7 @@ class Config(object):
     FLASK_ENV = os.environ.get('FLASK_ENV')
     ## so reqparser returns all errors rather than the first
     BUNDLE_ERRORS = os.environ.get('BUNDLE_ERRORS')
+
+    ## db variables
+    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')
+    SQLALCHEMY_TRACK_MODIFICATIONS = os.environ.get('SQLALCHEMY_TRACK_MODIFICATIONS')

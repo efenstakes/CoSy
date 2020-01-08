@@ -1,6 +1,7 @@
 ## imports
 from flask import Flask
 from flask_marshmallow import Marshmallow
+from flask_sqlalchemy import SQLAlchemy 
 
 
 ## create flask object
@@ -8,8 +9,11 @@ app = Flask(__name__, instance_relative_config=True)
 ## set app configuration
 app.config.from_object('config.Config')
 
+## create an sqlalchemy object
+db = SQLAlchemy(app)
 ## create a marshmallow object
 ma = Marshmallow(app)
+
 
 
 ## import module blueprints
