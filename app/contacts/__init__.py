@@ -6,9 +6,7 @@ from flask_restful import Api
 from .models import Contact
 
 ## schemas
-from .schemas import (
-
-)
+from .schemas import ContactSchema, contact_schema, contacts_schema
 
 ## resources
 from .resources import (
@@ -23,7 +21,7 @@ contacts_api = Api(contacts_bp)
 
 ## add api routes
 contacts_api.add_resource(ContactAdd, '/')
-contacts_api.add_resource(ContactUpdate, '/<id>')
+contacts_api.add_resource(ContactUpdate, '/<name>')
 contacts_api.add_resource(ContactDelete, '/<id>')
 contacts_api.add_resource(ContactDetails, '/<id>')
-contacts_api.add_resource(ContactsAll, '/')
+contacts_api.add_resource(ContactsAll, '/<account>')

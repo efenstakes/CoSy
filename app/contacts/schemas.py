@@ -5,4 +5,8 @@ from . import Contact
 
 
 class ContactSchema(ma.Schema):
-    fields = ('id', 'name', 'phone', 'email', 'joined_on')
+    fields = ('id', 'account', 'name', 'phone', 'email', 'joined_on')
+
+
+contact_schema = ContactSchema()    
+contacts_schema = ContactSchema(many=True)    
