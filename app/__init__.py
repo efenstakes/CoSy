@@ -20,11 +20,12 @@ ma = Marshmallow(app)
 
 ## import module blueprints
 from .contacts import contacts_bp 
+from .accounts import accounts_bp
 
 
 ## add the module blueprints to the app instance
 app.register_blueprint(contacts_bp, url_prefix='/api/contact')
-
+app.register_blueprint(accounts_bp, url_prefix='/api/account')
 
 
 
@@ -34,6 +35,11 @@ def before_any_request():
     with app.app_context():
         db.create_all()
     print('starting server...')
+
+
+
+## import jwt authentication middleware
+from .auth import *
 
 
 ### create more routes
